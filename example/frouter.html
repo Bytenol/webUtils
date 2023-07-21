@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- Frouter: A Fronted Javascript router
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frouter Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="Frouter" data-url="/home">
+        <h1>This is the home page</h1>
+        <button class="Frouter-a" data-goto="/about">to about</button>
+        <button class="Frouter-a" data-goto="/settings">to settings</button>
+        <button class="Frouter-a" data-goto="back">Back</button>
+    </section>
+
+    <section class="Frouter" data-url="/about">
+        <h1>This is the about page</h1>
+        <button class="Frouter-a" data-goto="/home">to home</button>
+        <button class="Frouter-a" data-goto="/settings">to settings</button>
+        <button class="Frouter-a" data-goto="back">Back</button>
+    </section>
+
+    <section class="Frouter" data-url="/settings">
+        <h1>This is the settings page</h1>
+        <button class="Frouter-a" data-goto="/home">to home</button>
+        <button class="Frouter-a" data-goto="/about">to about</button>
+        <button class="Frouter-a" data-goto="back">Back</button>
+    </section>
+
+    <script type="module">
+        import * as url from "../build/frouter.js";
+        url.init({
+            debug: true,    // optional
+            pageClass: "Frouter",   // classname for pages
+            navClass: "Frouter-a",  // classname for navigators
+            homePage: "/settings"   // homepage
+        });
+
+        url.onEnter("/settings", () => console.log("entering Settings page"));
+        url.onExit("/home", () => console.log("leaving home"));
+    </script>
+
+</body>
+</html>

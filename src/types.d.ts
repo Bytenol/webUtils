@@ -1,0 +1,3 @@
+interface iSwipeCtrlInitParams {
+    debug?: boolean
+}

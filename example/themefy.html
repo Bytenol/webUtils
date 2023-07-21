@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Themefy</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="T-bg0">
+    <div class="T-bg1 T-fg0" style="margin: 10px; padding: 20px">Hello world</div>
+    <script type="module">
+        import {themefy} from "../build/index.mjs";
+
+        const theme = {
+            white: { bg0: "#fff", bg1: "#dccbcb", fg0: "#3f3b3b" },
+            dark: { bg0: "#1e1c1c", bg1: "#433d3d", fg0: "#caa9a9" },
+            blue: { bg0: "#f8f8f8", bg1: "#98bde3", fg0: "#454aa2" },
+        };
+
+        themefy.init({
+            debug: true,
+            transition: "1s",
+            className: "T",
+            default: "white",
+            theme: theme
+        });
+        
+        document.body.appendChild(themefy.createThemeChooser());
+    </script>
+</body>
+</html>
